@@ -1,14 +1,12 @@
 class PostsController < ApplicationController
 
   def index
-    @posts = Post.all #全てのレコードを@postsに代入
-  end
-
-  def new
+    @posts = Post.all.order(id: "DESC") #全てのレコードを@postsに代入
   end
 
   def create
     Post.create(content: params[:content])
+    redirect_to action: :index
   end
 
 end
